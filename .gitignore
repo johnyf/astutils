@@ -1,0 +1,7 @@
+astutils/_version.py
+build/*
+*.egg-info
+*.egg
+*.pyc
+*.swp
+
