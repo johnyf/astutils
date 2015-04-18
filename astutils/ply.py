@@ -130,5 +130,6 @@ def rewrite_tables(Parser, tabmodule, outputdir):
         debug=True)
 
 
+# example use:
 # if __name__ == '__main__':
 #    rewrite_tables(Parser, TABMODULE, outputdir)
