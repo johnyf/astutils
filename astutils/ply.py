@@ -82,10 +82,8 @@ class Parser(object):
 
     def parse(self, formula, debuglog=None):
         """Parse formula string and create abstract syntax tree (AST)."""
-        if debuglog is None:
-            debuglog = self.logger
         root = self.parser.parse(
-            formula,
+            input=formula,
             lexer=self.lexer.lexer,
             debug=debuglog)
         if root is None:
