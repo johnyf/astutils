@@ -18,6 +18,16 @@ s = (
 keywords = [
     'lexing', 'parsing', 'syntax tree', 'abstract syntax tree',
     'AST', 'PLY', 'lex', 'yacc']
+classifiers = [
+    'Development Status :: 2 - Pre-Alpha',
+    'Intended Audience :: Developers',
+    'License :: OSI Approved :: BSD License',
+    'Operating System :: OS Independent',
+    'Programming Language :: Python',
+    'Programming Language :: Python :: 2.7',
+    'Programming Language :: Python :: 3',
+    'Topic :: Software Development']
+
 
 if __name__ == '__main__':
     with open(VERSION_FILE, 'w') as f:
@@ -34,4 +44,5 @@ if __name__ == '__main__':
         install_requires=['ply >= 3.4'],
         packages=[name],
         package_dir={name: name},
+        classifiers=classifiers,
         keywords=keywords)
