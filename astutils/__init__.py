@@ -1,3 +1,4 @@
+"""Utilities for abstract syntax trees and parsing with PLY."""
 from astutils.ast import Terminal, Operator
 from astutils.ply import Lexer, Parser, rewrite_tables
 try:
