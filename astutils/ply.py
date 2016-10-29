@@ -2,8 +2,10 @@
 from __future__ import absolute_import
 import logging
 import os
+
 import ply.lex
 import ply.yacc
+
 from astutils import ast as nodes
 
 
