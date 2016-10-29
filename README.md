@@ -15,6 +15,11 @@ The examples under `examples/` demonstrate how to use these classes to create a 
 These classes provide the boilerplate for parsing with PLY, and are based on code that was developed in [`tulip`](https://github.com/tulip-control/tulip-control) and [`promela`](https://github.com/johnyf/promela).
 
 
+License
+=======
+[BSD-3](http://opensource.org/licenses/BSD-3-Clause), see file `LICENSE`.
+
+
 [build_img]: https://travis-ci.org/johnyf/astutils.svg?branch=master
 [travis]: https://travis-ci.org/johnyf/astutils
 [coverage]: https://coveralls.io/repos/johnyf/astutils/badge.svg?branch=master
