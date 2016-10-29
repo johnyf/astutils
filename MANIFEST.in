@@ -1,4 +1,6 @@
 include LICENSE
 include README.md
 include examples/*.py
+include examples/README.md
 include examples/foo/*.py
+include tests/*_test.py

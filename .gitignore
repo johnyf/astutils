@@ -1,7 +1,7 @@
 astutils/_version.py
 build/*
+tests/foo.py
 *.egg-info
 *.egg
 *.pyc
 *.swp
-
