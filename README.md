@@ -1,3 +1,7 @@
+[![Build Status][build_img]][travis]
+[![Coverage Status][coverage]][coveralls]
+
+
 About
 =====
 
@@ -9,3 +13,9 @@ Bare essentials for building abstract syntax trees (AST) and Python `lex`-`yacc`
 The examples under `examples/` demonstrate how to use these classes to create a richer AST, a parser, and different backends that use the same parser.
 
 These classes provide the boilerplate for parsing with PLY, and are based on code that was developed in [`tulip`](https://github.com/tulip-control/tulip-control) and [`promela`](https://github.com/johnyf/promela).
+
+
+[build_img]: https://travis-ci.org/johnyf/astutils.svg?branch=master
+[travis]: https://travis-ci.org/johnyf/astutils
+[coverage]: https://coveralls.io/repos/johnyf/astutils/badge.svg?branch=master
+[coveralls]: https://coveralls.io/r/johnyf/astutils?branch=master
