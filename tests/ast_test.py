@@ -5,7 +5,7 @@ def test_terminal():
     value = 'a'
     t = ast.Terminal(value)
     r = repr(t)
-    assert r == "Terminal('a', terminal)", r
+    assert r == "Terminal('a', 'terminal')", r
     r = str(t)
     assert r == 'a', r
     r = len(t)
@@ -29,8 +29,8 @@ def test_operator():
     r = repr(t)
     r_ = (
         "Operator('+', "
-        "Terminal('a', terminal), "
-        "Terminal('b', terminal))")
+        "Terminal('a', 'terminal'), "
+        "Terminal('b', 'terminal'))")
     assert r == r_, r
     r = str(t)
     assert r == '(+ a b)', r
