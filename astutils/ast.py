@@ -16,7 +16,7 @@ class Terminal(object):
     def __repr__(self):
         return '{cls}({v}, {t})'.format(
             cls=type(self).__name__,
-            t=self.type,
+            t=repr(self.type),
             v=repr(self.value))
 
     def __str__(self, *arg, **kw):
