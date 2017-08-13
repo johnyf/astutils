@@ -13,6 +13,9 @@ class Terminal(object):
         self.type = dtype
         self.value = value
 
+    def __hash__(self):
+        return id(self)
+
     def __repr__(self):
         return '{cls}({v}, {t})'.format(
             cls=type(self).__name__,

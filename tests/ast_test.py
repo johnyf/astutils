@@ -20,6 +20,22 @@ def test_terminal():
     assert r == value, r
 
 
+def test_hash():
+    # different AST node instances should
+    # have different hash
+    #
+    # terminals
+    value = 'foo'
+    a = ast.Terminal(value)
+    b = ast.Terminal(value)
+    assert hash(a) != hash(b)
+    # operators
+    op = 'bar'
+    a = ast.Operator(op)
+    b = ast.Operator(op)
+    assert hash(a) != hash(b)
+
+
 def test_operator():
     a = ast.Terminal('a')
     b = ast.Terminal('b')
