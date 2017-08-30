@@ -29,8 +29,12 @@ class Terminal(object):
         return 1
 
     def __eq__(self, other):
-        return (self.type == other.type and
+        try:
+            return (
+                self.type == other.type and
                 self.value == other.value)
+        except AttributeError:
+            return False
 
     def flatten(self, *arg, **kw):
         return self.value

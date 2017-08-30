@@ -16,6 +16,8 @@ def test_terminal():
     assert t != p, (t, p)
     p = ast.Terminal(value, 'number')
     assert t != p, (t, p)
+    p = 54
+    assert t != p, (t, p)
     r = t.flatten()
     assert r == value, r
 
