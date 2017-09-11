@@ -10,14 +10,6 @@ def test_terminal():
     assert r == 'a', r
     r = len(t)
     assert r == 1, r
-    p = ast.Terminal(value)
-    assert t == p, (t, p)
-    p = ast.Terminal('b')
-    assert t != p, (t, p)
-    p = ast.Terminal(value, 'number')
-    assert t != p, (t, p)
-    p = 54
-    assert t != p, (t, p)
     r = t.flatten()
     assert r == value, r
 
@@ -36,6 +28,19 @@ def test_hash():
     a = ast.Operator(op)
     b = ast.Operator(op)
     assert hash(a) != hash(b)
+
+
+def test_eq():
+    value = 'a'
+    t = ast.Terminal(value)
+    p = ast.Terminal(value)
+    assert t == p, (t, p)
+    p = ast.Terminal('b')
+    assert t != p, (t, p)
+    p = ast.Terminal(value, 'number')
+    assert t != p, (t, p)
+    p = 54
+    assert t != p, (t, p)
 
 
 def test_operator():
