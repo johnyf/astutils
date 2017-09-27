@@ -3,5 +3,6 @@ build/*
 tests/foo.py
 *.egg-info
 *.egg
+__pycache__
 *.pyc
 *.swp
