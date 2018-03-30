@@ -60,14 +60,10 @@ class Operator(object):
             op=repr(self.operator),
             xyz=', '.join(repr(x) for x in self.operands))
 
-    def __str__(self, depth=None):
-        if depth is not None:
-            depth -= 1
-        if depth == 0:
-            return '...'
+    def __str__(self):
         return '({op} {xyz})'.format(
             op=self.operator,
-            xyz=' '.join(x.__str__(depth=depth)
+            xyz=' '.join(x.__str__()
                          for x in self.operands))
 
     def __len__(self):
