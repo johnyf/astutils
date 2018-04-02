@@ -44,7 +44,7 @@ if __name__ == '__main__':
         author_email='jfilippidis@gmail.com',
         url=url,
         license='BSD',
-        install_requires=['ply >= 3.4'],
+        install_requires=['ply >= 3.4, <= 3.10'],
         packages=[name],
         package_dir={name: name},
         classifiers=classifiers,
