@@ -1,4 +1,7 @@
 """Abstract syntax tree nodes."""
+# Copyright 2014-2020 by California Institute of Technology
+# All rights reserved. Licensed under 3-clause BSD.
+#
 
 
 class Terminal(object):

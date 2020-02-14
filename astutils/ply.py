@@ -1,4 +1,7 @@
 """Utilities for Python lex-yacc (PLY)."""
+# Copyright 2014-2020 by California Institute of Technology
+# All rights reserved. Licensed under 3-clause BSD.
+#
 from __future__ import absolute_import
 import logging
 import os
