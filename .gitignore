@@ -1,4 +1,5 @@
 astutils/_version.py
+.pytest_cache/
 build/*
 tests/foo.py
 *.egg-info

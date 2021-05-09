@@ -1,7 +1,7 @@
 import os
 
 import astutils.ply
-from nose import tools as nt
+import pytest
 
 
 class Lexer(astutils.ply.Lexer):
@@ -66,7 +66,7 @@ def test_illegal_character():
     parser = Parser()
     parser.names = {'True': True}
     s = '( True'
-    with nt.assert_raises(Exception):
+    with pytest.raises(Exception):
         parser.parse(s)
 
 
@@ -74,7 +74,7 @@ def test_syntax_error():
     parser = Parser()
     parser.names = {'True': True}
     s = 'True True'
-    with nt.assert_raises(Exception):
+    with pytest.raises(Exception):
         parser.parse(s)
 
 

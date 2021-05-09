@@ -1,5 +1,4 @@
 [![Build Status][build_img]][travis]
-[![Coverage Status][coverage]][coveralls]
 
 
 About
@@ -22,5 +21,3 @@ License
 
 [build_img]: https://travis-ci.org/johnyf/astutils.svg?branch=master
 [travis]: https://travis-ci.org/johnyf/astutils
-[coverage]: https://coveralls.io/repos/johnyf/astutils/badge.svg?branch=master
-[coveralls]: https://coveralls.io/r/johnyf/astutils?branch=master

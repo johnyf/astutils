@@ -35,7 +35,7 @@ s = (
 ply_required = 'ply >= 3.4'
 install_requires = [ply_required]
 tests_require = [
-    'nose >= 1.3.4']
+    'pytest >= 4.6.11']
 
 
 if __name__ == '__main__':

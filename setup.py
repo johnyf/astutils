@@ -15,6 +15,7 @@ version = '{major}.{minor}.{micro}'.format(
 s = (
     '# This file was generated from setup.py\n'
     "version = '{version}'\n").format(version=version)
+tests_require = ['pytest >= 4.6.11']
 keywords = [
     'lexing', 'parsing', 'syntax tree', 'abstract syntax tree',
     'AST', 'PLY', 'lex', 'yacc']
@@ -46,6 +47,7 @@ if __name__ == '__main__':
         url=url,
         license='BSD',
         install_requires=['ply >= 3.4, <= 3.10'],
+        tests_require=tests_require,
         packages=[name],
         package_dir={name: name},
         classifiers=classifiers,
