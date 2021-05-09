@@ -176,8 +176,13 @@ def rewrite_tables(
                 'removed file `{path}`'.format(
                     path=path))
     parser = parser_class()
-    parser.build(
-        write_tables=True,
-        outputdir=outputdir,
-        tabmodule=table,
-        debug=True)
+    debugfile = ply.yacc.debug_file
+    path = os.path.join(outputdir, debugfile)
+    with open(path, 'w') as debuglog_file:
+        debuglog = ply.yacc.PlyLogger(debuglog_file)
+        parser.build(
+            write_tables=True,
+            outputdir=outputdir,
+            tabmodule=table,
+            debug=True,
+            debuglog=debuglog)
