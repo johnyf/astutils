@@ -48,16 +48,16 @@ def test_parser():
     s = 'True'
     r = parser.parse(s)
     assert r is True, r
-    s = 'True /\ True'
+    s = r'True /\ True'
     r = parser.parse(s)
     assert r is True, r
-    s = 'False /\ True'
+    s = r'False /\ True'
     r = parser.parse(s)
     assert r is False, r
-    s = '~ False /\ ~ True'
+    s = r'~ False /\ ~ True'
     r = parser.parse(s)
     assert r is False, r
-    s = '~ False /\ True'
+    s = r'~ False /\ True'
     r = parser.parse(s)
     assert r is True, r
 

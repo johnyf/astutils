@@ -48,7 +48,7 @@ class Lexer(astutils.Lexer):
     t_RPAREN = r'\)'
     t_NUMBER = r'\d+'
     t_IMP = '->'
-    t_BIMP = '\<->'
+    t_BIMP = r'\<->'
     t_ignore = " \t"
 
     def t_comment(self, t):
