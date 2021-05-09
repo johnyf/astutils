@@ -27,7 +27,7 @@ class Lexer(astutils.Lexer):
         super(Lexer, self).__init__(**kw)
 
     def t_NAME(self, t):
-        r"[A-Za-z_][A-za-z0-9]*"
+        r'[A-Za-z_][A-za-z0-9]*'
         t.type = self.reserved.get(
             t.value, 'NAME')
         return t
@@ -49,7 +49,7 @@ class Lexer(astutils.Lexer):
     t_NUMBER = r'\d+'
     t_IMP = '->'
     t_BIMP = r'\<->'
-    t_ignore = " \t"
+    t_ignore = ' \t'
 
     def t_comment(self, t):
         r'\#.*'
@@ -57,7 +57,7 @@ class Lexer(astutils.Lexer):
 
     def t_newline(self, t):
         r'\n+'
-        t.lexer.lineno += t.value.count("\n")
+        t.lexer.lineno += t.value.count('\n')
 
 
 class Parser(astutils.Parser):

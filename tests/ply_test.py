@@ -11,7 +11,7 @@ class Lexer(astutils.ply.Lexer):
         self.misc = ['NAME']
         super(Lexer, self).__init__(**kw)
 
-    t_NAME = r"[A-Za-z_][A-za-z0-9]*"
+    t_NAME = r'[A-Za-z_][A-za-z0-9]*'
     t_NOT = r'~'
     t_AND = r'/\\'
     t_ignore = ' \t'
