@@ -21,7 +21,7 @@ from setuptools import setup
 
 name = 'foo'
 description = 'foo is very useful.'
-url = 'https://home.org/{name}'.format(name=name)
+url = 'https://example.org/{name}'.format(name=name)
 README = 'README.md'
 VERSION_FILE = '{name}/_version.py'.format(name=name)
 MAJOR = 0
@@ -53,8 +53,8 @@ if __name__ == '__main__':
         version=version,
         description=description,
         long_description=long_description,
-        author='John Doe',
-        author_email='john@doe.com',
+        author='Name',
+        author_email='name@example.org',
         url=url,
         license='BSD',
         install_requires=install_requires,
