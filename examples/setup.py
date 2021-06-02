@@ -46,11 +46,13 @@ if __name__ == '__main__':
     from foo import lexyacc
     lexyacc._rewrite_tables(outputdir=name)
     # so that they will be copied to `site-packages`
+    with open(README) as f:
+        long_description = f.read()
     setup(
         name=name,
         version=version,
         description=description,
-        long_description=open(README).read(),
+        long_description=long_description,
         author='John Doe',
         author_email='john@doe.com',
         url=url,

@@ -37,11 +37,13 @@ classifiers = [
 if __name__ == '__main__':
     with open(VERSION_FILE, 'w') as f:
         f.write(s)
+    with open(README) as f:
+        long_description = f.read()
     setup(
         name=name,
         version=version,
         description=description,
-        long_description=open(README).read(),
+        long_description=long_description,
         author='Ioannis Filippidis',
         author_email='jfilippidis@gmail.com',
         url=url,
