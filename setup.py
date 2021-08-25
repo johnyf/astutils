@@ -15,6 +15,9 @@ VERSION = '{major}.{minor}.{micro}'.format(
 VERSION_FILE_TEXT = (
     '# This file was generated from setup.py\n'
     "version = '{version}'\n").format(version=VERSION)
+PYTHON_REQUIRES = (
+    '>=2.7, '
+    '!=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, !=3.5.*')
 TESTS_REQUIRE = ['pytest >= 4.6.11']
 KEYWORDS = [
     'lexing', 'parsing', 'syntax tree', 'abstract syntax tree',
@@ -46,6 +49,7 @@ if __name__ == '__main__':
         author_email='jfilippidis@gmail.com',
         url=PACKAGE_URL,
         license='BSD',
+        python_requires=PYTHON_REQUIRES,
         install_requires=['ply >= 3.4, <= 3.10'],
         tests_require=TESTS_REQUIRE,
         packages=[PACKAGE_NAME],

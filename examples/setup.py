@@ -37,6 +37,9 @@ VERSION_FILE_TEXT = (
     '# This file was generated from setup.py\n'
     "version = '{version}'\n").format(
         version=VERSION)
+PYTHON_REQUIRES = (
+    '>=2.7, '
+    '!=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, !=3.5.*')
 PLY_REQUIRED = 'ply >= 3.4, <= 3.10'
 INSTALL_REQUIRES = [PLY_REQUIRED]
 TESTS_REQUIRE = [
@@ -63,6 +66,7 @@ if __name__ == '__main__':
         author_email='name@example.org',
         url=PACKAGE_URL,
         license='BSD',
+        python_requires=PYTHON_REQUIRES,
         install_requires=INSTALL_REQUIRES,
         tests_require=TESTS_REQUIRE,
         packages=[PACKAGE_NAME],
