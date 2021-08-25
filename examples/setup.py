@@ -9,13 +9,15 @@ then each parsing module can provide a `_rewrite_tables`
 function that hides the details (table file name, etc).
 
 If some parsing module has extra dependenies,
-then these can be installed using `pip.main`.
+then these can be installed using `pip`.
 
 Although `pip` installs dependencies in `install_requires` first,
 the below works also if one runs `python setup.py install`,
 assuming that `pip` is available.
 """
-import pip
+import subprocess
+import sys
+
 from setuptools import setup
 
 
@@ -42,7 +44,8 @@ if __name__ == '__main__':
     with open(VERSION_FILE, 'w') as f:
         f.write(s)
     # first install PLY, then build the tables
-    pip.main(['install', ply_required])
+    cmd = [sys.executable, '-m', 'pip', 'install', ply_required]
+    subprocess.check_call(cmd)
     from foo import lexyacc
     lexyacc._rewrite_tables(outputdir=name)
     # so that they will be copied to `site-packages`
