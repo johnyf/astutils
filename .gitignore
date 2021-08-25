@@ -1,9 +1,9 @@
-astutils/_version.py
+/astutils/_version.py
 .pytest_cache/
-build/*
-tests/foo.py
-*.egg-info
+/build/*
+/tests/foo.py
+*.egg-info/
 *.egg
-__pycache__
+__pycache__/
 *.pyc
 *.swp
