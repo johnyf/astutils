@@ -34,7 +34,7 @@ version = '{major}.{minor}.{micro}'.format(
 s = (
     '# This file was generated from setup.py\n'
     "version = '{version}'\n").format(version=version)
-ply_required = 'ply >= 3.4'
+ply_required = 'ply >= 3.4, <= 3.10'
 install_requires = [ply_required]
 tests_require = [
     'pytest >= 4.6.11']
