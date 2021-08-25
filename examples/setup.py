@@ -21,47 +21,50 @@ import sys
 from setuptools import setup
 
 
-name = 'foo'
-description = 'foo is very useful.'
-url = 'https://example.org/{name}'.format(name=name)
+PACKAGE_NAME = 'foo'
+DESCRIPTION = 'foo is very useful.'
+PACKAGE_URL = 'https://example.org/{name}'.format(
+    name=PACKAGE_NAME)
 README = 'README.md'
-VERSION_FILE = '{name}/_version.py'.format(name=name)
+VERSION_FILE = '{name}/_version.py'.format(
+    name=PACKAGE_NAME)
 MAJOR = 0
 MINOR = 0
 MICRO = 1
-version = '{major}.{minor}.{micro}'.format(
+VERSION = '{major}.{minor}.{micro}'.format(
     major=MAJOR, minor=MINOR, micro=MICRO)
-s = (
+VERSION_FILE_TEXT = (
     '# This file was generated from setup.py\n'
-    "version = '{version}'\n").format(version=version)
-ply_required = 'ply >= 3.4, <= 3.10'
-install_requires = [ply_required]
-tests_require = [
+    "version = '{version}'\n").format(
+        version=VERSION)
+PLY_REQUIRED = 'ply >= 3.4, <= 3.10'
+INSTALL_REQUIRES = [PLY_REQUIRED]
+TESTS_REQUIRE = [
     'pytest >= 4.6.11']
 
 
 if __name__ == '__main__':
     with open(VERSION_FILE, 'w') as f:
-        f.write(s)
+        f.write(VERSION_FILE_TEXT)
     # first install PLY, then build the tables
-    cmd = [sys.executable, '-m', 'pip', 'install', ply_required]
+    cmd = [sys.executable, '-m', 'pip', 'install', PLY_REQUIRED]
     subprocess.check_call(cmd)
     from foo import lexyacc
-    lexyacc._rewrite_tables(outputdir=name)
+    lexyacc._rewrite_tables(outputdir=PACKAGE_NAME)
     # so that they will be copied to `site-packages`
     with open(README) as f:
         long_description = f.read()
     setup(
-        name=name,
-        version=version,
-        description=description,
+        name=PACKAGE_NAME,
+        version=VERSION,
+        description=DESCRIPTION,
         long_description=long_description,
         author='Name',
         author_email='name@example.org',
-        url=url,
+        url=PACKAGE_URL,
         license='BSD',
-        install_requires=install_requires,
-        tests_require=tests_require,
-        packages=[name],
-        package_dir={name: name},
+        install_requires=INSTALL_REQUIRES,
+        tests_require=TESTS_REQUIRE,
+        packages=[PACKAGE_NAME],
+        package_dir={PACKAGE_NAME: PACKAGE_NAME},
         keywords=['parsing', 'setup'])

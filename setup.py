@@ -2,24 +2,24 @@
 from setuptools import setup
 
 
-name = 'astutils'
-description = 'Utilities for abstract syntax trees and parsing with PLY.'
-url = 'https://github.com/johnyf/{name}'.format(name=name)
+PACKAGE_NAME = 'astutils'
+DESCRIPTION = 'Utilities for abstract syntax trees and parsing with PLY.'
+PACKAGE_URL = 'https://github.com/johnyf/{name}'.format(name=PACKAGE_NAME)
 README = 'README.md'
-VERSION_FILE = '{name}/_version.py'.format(name=name)
+VERSION_FILE = '{name}/_version.py'.format(name=PACKAGE_NAME)
 MAJOR = 0
 MINOR = 0
 MICRO = 5
-version = '{major}.{minor}.{micro}'.format(
+VERSION = '{major}.{minor}.{micro}'.format(
     major=MAJOR, minor=MINOR, micro=MICRO)
-s = (
+VERSION_FILE_TEXT = (
     '# This file was generated from setup.py\n'
-    "version = '{version}'\n").format(version=version)
-tests_require = ['pytest >= 4.6.11']
-keywords = [
+    "version = '{version}'\n").format(version=VERSION)
+TESTS_REQUIRE = ['pytest >= 4.6.11']
+KEYWORDS = [
     'lexing', 'parsing', 'syntax tree', 'abstract syntax tree',
     'AST', 'PLY', 'lex', 'yacc']
-classifiers = [
+CLASSIFIERS = [
     'Development Status :: 2 - Pre-Alpha',
     'Intended Audience :: Developers',
     'License :: OSI Approved :: BSD License',
@@ -36,21 +36,21 @@ classifiers = [
 
 if __name__ == '__main__':
     with open(VERSION_FILE, 'w') as f:
-        f.write(s)
+        f.write(VERSION_FILE_TEXT)
     with open(README) as f:
         long_description = f.read()
     setup(
-        name=name,
-        version=version,
-        description=description,
+        name=PACKAGE_NAME,
+        version=VERSION,
+        description=DESCRIPTION,
         long_description=long_description,
         author='Ioannis Filippidis',
         author_email='jfilippidis@gmail.com',
-        url=url,
+        url=PACKAGE_URL,
         license='BSD',
         install_requires=['ply >= 3.4, <= 3.10'],
-        tests_require=tests_require,
-        packages=[name],
-        package_dir={name: name},
-        classifiers=classifiers,
-        keywords=keywords)
+        tests_require=TESTS_REQUIRE,
+        packages=[PACKAGE_NAME],
+        package_dir={PACKAGE_NAME: PACKAGE_NAME},
+        classifiers=CLASSIFIERS,
+        keywords=KEYWORDS)
