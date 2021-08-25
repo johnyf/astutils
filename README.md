@@ -1,4 +1,4 @@
-[![Build Status][build_img]][travis]
+[![Build Status][build_img]][ci]
 
 
 About
@@ -26,5 +26,5 @@ License
 [BSD-3](https://opensource.org/licenses/BSD-3-Clause), see file `LICENSE`.
 
 
-[build_img]: https://travis-ci.org/johnyf/astutils.svg?branch=master
-[travis]: https://travis-ci.org/johnyf/astutils
+[build_img]: https://github.com/johnyf/astutils/actions/workflows/main.yml/badge.svg?branch=main
+[ci]: https://github.com/johnyf/astutils/actions

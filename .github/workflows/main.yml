@@ -1,0 +1,43 @@
+---
+# configuration for GitHub Actions
+name: astutils tests
+on:
+    push:
+    pull_request:
+    schedule:
+        - cron: '43 5 4 * *'
+jobs:
+    build:
+        name: Build
+        runs-on: ubuntu-20.04
+        strategy:
+            matrix:
+                python-version: [
+                    '2.7',
+                    '3.6',
+                    '3.7',
+                    ]
+        steps:
+            - uses: actions/checkout@v2
+            - name: Set up Python ${{ matrix.python-version }}
+              uses: actions/setup-python@v2
+              with:
+                  python-version: ${{ matrix.python-version }}
+            - name: Update Python environment
+              run: |
+                pip install --upgrade pip setuptools
+            - name: Install `astutils`
+              run: |
+                python setup.py sdist
+                pip install dist/astutils-*.tar.gz
+            - name: Install test dependencies
+              run: |
+                pip install pytest
+            - name: Run `astutils` tests
+              run: |
+                set -o posix
+                echo "Exported environment variables:"
+                export -p
+                # run tests
+                cd tests/
+                pytest -v --continue-on-collection-errors .
