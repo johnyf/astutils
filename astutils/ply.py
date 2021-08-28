@@ -130,7 +130,10 @@ class Parser(object):
                 s=' '.join(s)))
 
 
-def rewrite_tables(Parser, tabmodule, outputdir):
+def rewrite_tables(
+        parser_class,
+        tabmodule,
+        outputdir):
     """Write the parser table file, even if it exists.
 
     The module name (after last dot) in `tabmodule`
@@ -151,7 +154,7 @@ def rewrite_tables(Parser, tabmodule, outputdir):
         rewrite_tables(Parser, _TABMODULE, outputdir)
     ```
 
-    @param Parser: PLY production rules
+    @param parser_class: PLY production rules
     @param tabmodule: module name for table file
     @type tabmodule: `str`
     @param outputdir: dump parser file
@@ -164,7 +167,7 @@ def rewrite_tables(Parser, tabmodule, outputdir):
             os.remove(outputdir + table + ext)
         except:
             pass
-    parser = Parser()
+    parser = parser_class()
     parser.build(
         write_tables=True,
         outputdir=outputdir,
