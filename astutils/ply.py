@@ -136,6 +136,21 @@ def rewrite_tables(Parser, tabmodule, outputdir):
     The module name (after last dot) in `tabmodule`
     is appended to `outputdir` to form the path.
 
+    Example use:
+
+    ```python
+    _TABMODULE = 'packagename.modulename_parsetab'
+
+
+    class Parser(...):
+        ...
+
+
+    if __name__ == '__main__':
+        outputdir = './'
+        rewrite_tables(Parser, _TABMODULE, outputdir)
+    ```
+
     @param Parser: PLY production rules
     @param tabmodule: module name for table file
     @type tabmodule: `str`
@@ -155,8 +170,3 @@ def rewrite_tables(Parser, tabmodule, outputdir):
         outputdir=outputdir,
         tabmodule=table,
         debug=True)
-
-
-# example use:
-# if __name__ == '__main__':
-#    rewrite_tables(Parser, TABMODULE, outputdir)
