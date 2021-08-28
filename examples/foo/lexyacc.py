@@ -13,13 +13,18 @@ TABMODULE = 'foo.calc_parsetab'
 class Lexer(astutils.Lexer):
     """Lexer for Boolean formulae."""
 
-    reserved = {
-        'False': 'FALSE',
-        'True': 'TRUE'}
-    delimiters = ['LPAREN', 'RPAREN', 'COMMA']
-    operators = ['NOT', 'AND', 'OR', 'XOR', 'IMP', 'BIMP',
-                 'EQUALS', 'NEQUALS']
-    misc = ['NAME', 'NUMBER']
+    def __init__(self, **kw):
+        self.reserved = {
+            'False': 'FALSE',
+            'True': 'TRUE'}
+        self.delimiters = [
+            'LPAREN', 'RPAREN', 'COMMA']
+        self.operators = [
+            'NOT', 'AND', 'OR', 'XOR',
+            'IMP', 'BIMP',
+            'EQUALS', 'NEQUALS']
+        self.misc = ['NAME', 'NUMBER']
+        super(Lexer, self).__init__(**kw)
 
     def t_NAME(self, t):
         r"[A-Za-z_][A-za-z0-9]*"
@@ -58,19 +63,21 @@ class Lexer(astutils.Lexer):
 class Parser(astutils.Parser):
     """Parser for Boolean formulae."""
 
-    tabmodule = TABMODULE
-    start = 'expr'
-    # low to high
-    precedence = (
-        ('left', 'BIMP'),
-        ('left', 'IMP'),
-        ('left', 'XOR'),
-        ('left', 'OR'),
-        ('left', 'AND'),
-        ('left', 'EQUALS', 'NEQUALS'),
-        ('right', 'NOT'))
-    Lexer = Lexer
-    nodes = _ast.Nodes
+    def __init__(self, **kw):
+        self.tabmodule = TABMODULE
+        self.start = 'expr'
+        # low to high
+        self.precedence = (
+            ('left', 'BIMP'),
+            ('left', 'IMP'),
+            ('left', 'XOR'),
+            ('left', 'OR'),
+            ('left', 'AND'),
+            ('left', 'EQUALS', 'NEQUALS'),
+            ('right', 'NOT'))
+        self.Lexer = Lexer
+        self.nodes = _ast.Nodes
+        super(Parser, self).__init__(**kw)
 
     def p_bool(self, p):
         """expr : TRUE

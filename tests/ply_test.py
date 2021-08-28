@@ -6,8 +6,10 @@ from nose import tools as nt
 
 class Lexer(astutils.ply.Lexer):
 
-    operators = ['NOT', 'AND']
-    misc = ['NAME']
+    def __init__(self, **kw):
+        self.operators = ['NOT', 'AND']
+        self.misc = ['NAME']
+        super(Lexer, self).__init__(**kw)
 
     t_NAME = r"[A-Za-z_][A-za-z0-9]*"
     t_NOT = r'~'
@@ -17,12 +19,14 @@ class Lexer(astutils.ply.Lexer):
 
 class Parser(astutils.ply.Parser):
 
-    tabmodule = 'testing_parsetab'
-    start = 'expr'
-    precedence = (
-        ('left', 'AND'),
-        ('right', 'NOT'))
-    Lexer = Lexer
+    def __init__(self, **kw):
+        self.tabmodule = 'testing_parsetab'
+        self.start = 'expr'
+        self.precedence = (
+            ('left', 'AND'),
+            ('right', 'NOT'))
+        self.Lexer = Lexer
+        super(Parser, self).__init__(**kw)
 
     def p_not(self, p):
         """expr : NOT expr"""

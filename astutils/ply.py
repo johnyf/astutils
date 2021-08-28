@@ -18,13 +18,17 @@ logger = logging.getLogger(__name__)
 class Lexer(object):
     """Init and build methods."""
 
-    reserved = dict()
-    delimiters = list()
-    operators = list()
-    misc = list()
-    logger = logger
-
     def __init__(self, debug=False):
+        self.reserved = getattr(
+            self, 'reserved', dict())
+        self.delimiters = getattr(
+            self, 'delimiters', list())
+        self.operators = getattr(
+            self, 'operators', list())
+        self.misc = getattr(
+            self, 'misc', list())
+        self.logger = getattr(
+            self, 'logger', logger)
         self.tokens = (
             self.delimiters +
             self.operators +
@@ -59,18 +63,23 @@ class Parser(object):
     defined below, and add production rules.
     """
 
-    tabmodule = ''
-    start = 'expr'
-    # low to high
-    precedence = tuple()
-    Lexer = Lexer
-    nodes = _ast
-    logger = logger
-
     def __init__(
             self,
             nodes=None,
             lexer=None):
+        self.tabmodule = getattr(
+            self, 'tabmodule', '')
+        self.start = getattr(
+            self, 'start', 'expr')
+        # low to high
+        self.precedence = getattr(
+            self, 'precedence', tuple())
+        self.Lexer = getattr(
+            self, 'Lexer', Lexer)
+        self.nodes = getattr(
+            self, 'nodes', _ast)
+        self.logger = getattr(
+            self, 'logger', logger)
         if nodes is not None:
             self.nodes = nodes
         if lexer is None:
