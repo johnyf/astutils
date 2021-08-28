@@ -161,12 +161,20 @@ def rewrite_tables(
         in this directory
     @type outputdir: `str`
     """
+    if outputdir is None:
+        raise ValueError(
+            '`outputdir` must be `str`.')
     table = tabmodule.split('.')[-1]
     for ext in ('.py', '.pyc'):
-        try:
-            os.remove(outputdir + table + ext)
-        except:
-            pass
+        path = outputdir + table + ext
+        if os.path.isfile(path):
+            logger.info(
+                'found file `{path}`'.format(
+                    path=path))
+            os.remove(path)
+            logger.info(
+                'removed file `{path}`'.format(
+                    path=path))
     parser = parser_class()
     parser.build(
         write_tables=True,
