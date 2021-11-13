@@ -23,7 +23,8 @@ class Lexer(astutils.Lexer):
 
     def t_NAME(self, t):
         r"[A-Za-z_][A-za-z0-9]*"
-        t.type = self.reserved.get(t.value, 'NAME')
+        t.type = self.reserved.get(
+            t.value, 'NAME')
         return t
 
     def t_AND(self, t):
@@ -106,7 +107,8 @@ class Parser(astutils.Parser):
 
 
 def _rewrite_tables(outputdir='./'):
-    astutils.rewrite_tables(Parser, TABMODULE, outputdir)
+    astutils.rewrite_tables(
+        Parser, TABMODULE, outputdir)
 
 
 # this is a convenience to regenerate the tables

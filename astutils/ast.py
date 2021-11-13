@@ -7,12 +7,17 @@
 class Terminal(object):
     """Nullary symbol."""
 
-    def __init__(self, value, dtype='terminal'):
+    def __init__(
+            self,
+            value,
+            dtype='terminal'):
         try:
             value + 's'
         except TypeError:
             raise TypeError(
-                'value must be a string, got: {v}'.format(v=value))
+                'value must be a string, '
+                'got: {v}'.format(
+                    v=value))
         self.type = dtype
         self.value = value
 
@@ -46,12 +51,16 @@ class Terminal(object):
 class Operator(object):
     """Operator with arity > 0."""
 
-    def __init__(self, operator, *operands):
+    def __init__(
+            self,
+            operator,
+            *operands):
         try:
             operator + 'a'
         except TypeError:
             raise TypeError(
-                'operator must be string, got: {op}'.format(
+                'operator must be string, '
+                'got: {op}'.format(
                     op=operator))
         self.type = 'operator'
         self.operator = operator
@@ -61,20 +70,26 @@ class Operator(object):
         return '{cls}({op}, {xyz})'.format(
             cls=type(self).__name__,
             op=repr(self.operator),
-            xyz=', '.join(repr(x) for x in self.operands))
+            xyz=', '.join(
+                repr(x)
+                for x in self.operands))
 
     def __str__(self):
         return '({op} {xyz})'.format(
             op=self.operator,
-            xyz=' '.join(x.__str__()
-                         for x in self.operands))
+            xyz=' '.join(
+                x.__str__()
+                for x in self.operands))
 
     def __len__(self):
-        return 1 + sum(len(x) for x in self.operands)
+        return 1 + sum(
+            len(x) for x in self.operands)
 
     def flatten(self, *arg, **kw):
         return ' '.join([
             '(',
             self.operator,
-            ', '.join(x.flatten(*arg, **kw) for x in self.operands),
+            ', '.join(
+                x.flatten(*arg, **kw)
+                for x in self.operands),
             ')'])
