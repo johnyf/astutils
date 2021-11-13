@@ -130,7 +130,13 @@ class Parser(object):
             self,
             formula,
             debuglog=None):
-        """Parse formula string and create abstract syntax tree (AST)."""
+        """Parse string `formula`.
+
+        @param formula: input to the parser
+        @type formula: `str`
+        @return: what the parser returns
+            (many parsers return a syntax tree)
+        """
         if self.parser is None:
             self.build()
         root = self.parser.parse(
@@ -161,7 +167,9 @@ def rewrite_tables(
         parser_class,
         tabmodule,
         outputdir):
-    """Write the parser table file, even if it exists.
+    """Write the parser table file.
+
+    Overwrites any preexisting parser file.
 
     The module name (after last dot) in `tabmodule`
     is appended to `outputdir` to form the path.
