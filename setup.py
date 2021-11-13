@@ -38,7 +38,8 @@ CLASSIFIERS = [
     'Topic :: Software Development']
 
 
-if __name__ == '__main__':
+def run_setup():
+    """Install."""
     with open(VERSION_FILE, 'w') as f:
         f.write(VERSION_FILE_TEXT)
     with open(README) as f:
@@ -59,3 +60,7 @@ if __name__ == '__main__':
         package_dir={PACKAGE_NAME: PACKAGE_NAME},
         classifiers=CLASSIFIERS,
         keywords=KEYWORDS)
+
+
+if __name__ == '__main__':
+    run_setup()

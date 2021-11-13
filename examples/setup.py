@@ -46,7 +46,8 @@ TESTS_REQUIRE = [
     'pytest >= 4.6.11']
 
 
-if __name__ == '__main__':
+def run_setup():
+    """Install."""
     with open(VERSION_FILE, 'w') as f:
         f.write(VERSION_FILE_TEXT)
     # first install PLY, then build the tables
@@ -72,3 +73,7 @@ if __name__ == '__main__':
         packages=[PACKAGE_NAME],
         package_dir={PACKAGE_NAME: PACKAGE_NAME},
         keywords=['parsing', 'setup'])
+
+
+if __name__ == '__main__':
+    run_setup()
