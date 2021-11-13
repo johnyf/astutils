@@ -86,7 +86,7 @@ class Parser(object):
             lexer = self.Lexer()
         self.lexer = lexer
         self.tokens = self.lexer.tokens
-        self.build()
+        self.parser = None
 
     def build(
             self,
@@ -115,6 +115,8 @@ class Parser(object):
             formula,
             debuglog=None):
         """Parse formula string and create abstract syntax tree (AST)."""
+        if self.parser is None:
+            self.build()
         root = self.parser.parse(
             input=formula,
             lexer=self.lexer.lexer,
