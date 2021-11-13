@@ -27,7 +27,8 @@ class Lexer(object):
     def __init__(self, debug=False):
         self.tokens = (
             self.delimiters + self.operators +
-            self.misc + list(set(self.reserved.values())))
+            self.misc +
+            sorted(set(self.reserved.values())))
         self.build(debug=debug)
 
     def t_error(self, t):
