@@ -51,10 +51,8 @@ def run_setup():
     with open(VERSION_FILE, 'w') as f:
         f.write(VERSION_FILE_TEXT)
     # first install PLY, then build the tables
-    cmd = [sys.executable, '-m', 'pip', 'install', PLY_REQUIRED]
-    subprocess.check_call(cmd)
-    from foo import lexyacc
-    lexyacc._rewrite_tables(outputdir=PACKAGE_NAME)
+    _install_ply()
+    _build_parser()
     # so that they will be copied to `site-packages`
     with open(README) as f:
         long_description = f.read()
@@ -73,6 +71,20 @@ def run_setup():
         packages=[PACKAGE_NAME],
         package_dir={PACKAGE_NAME: PACKAGE_NAME},
         keywords=['parsing', 'setup'])
+
+
+def _install_ply():
+    cmd = [
+        sys.executable,
+        '-m', 'pip', 'install',
+        PLY_REQUIRED]
+    subprocess.check_call(cmd)
+
+
+def _build_parser():
+    from foo import lexyacc
+    lexyacc._rewrite_tables(
+        outputdir=PACKAGE_NAME)
 
 
 if __name__ == '__main__':
