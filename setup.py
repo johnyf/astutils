@@ -1,5 +1,5 @@
 """Installation script."""
-from setuptools import setup
+import setuptools
 
 
 PACKAGE_NAME = 'astutils'
@@ -43,7 +43,7 @@ if __name__ == '__main__':
         f.write(VERSION_FILE_TEXT)
     with open(README) as f:
         long_description = f.read()
-    setup(
+    setuptools.setup(
         name=PACKAGE_NAME,
         version=VERSION,
         description=DESCRIPTION,

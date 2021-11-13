@@ -18,7 +18,7 @@ assuming that `pip` is available.
 import subprocess
 import sys
 
-from setuptools import setup
+import setuptools
 
 
 PACKAGE_NAME = 'foo'
@@ -57,7 +57,7 @@ if __name__ == '__main__':
     # so that they will be copied to `site-packages`
     with open(README) as f:
         long_description = f.read()
-    setup(
+    setuptools.setup(
         name=PACKAGE_NAME,
         version=VERSION,
         description=DESCRIPTION,
