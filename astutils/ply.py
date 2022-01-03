@@ -143,11 +143,11 @@ class Parser(object):
             input=formula,
             lexer=self._lexer.lexer,
             debug=debuglog)
-        if root is None:
-            raise Exception(
-                'failed to parse:\n\t{f}'.format(
-                    f=formula))
-        return root
+        if root is not None:
+            return root
+        raise Exception(
+            'failed to parse:\n\t{f}'.format(
+                f=formula))
 
     def p_error(self, p):
         s = list()
