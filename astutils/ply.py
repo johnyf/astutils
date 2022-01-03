@@ -70,7 +70,7 @@ class Parser(object):
             nodes=None,
             lexer=None):
         self.tabmodule = getattr(
-            self, 'tabmodule', '')
+            self, 'tabmodule', None)
         self.start = getattr(
             self, 'start', 'expr')
         # low to high
