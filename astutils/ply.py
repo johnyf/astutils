@@ -199,7 +199,7 @@ def rewrite_tables(
     if outputdir is None:
         raise ValueError(
             '`outputdir` must be `str`.')
-    table = tabmodule.split('.')[-1]
+    table = tabmodule.rpartition('.')[-1]
     for ext in ('.py', '.pyc'):
         path = outputdir + table + ext
         if os.path.isfile(path):
