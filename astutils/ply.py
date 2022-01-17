@@ -80,9 +80,10 @@ class Parser(object):
             self, 'logger', logger)
         if nodes is not None:
             self.nodes = nodes
-        if lexer is None:
-            lexer = self.Lexer()
-        self._lexer = lexer
+        if lexer is not None:
+            self._lexer = lexer
+        else:
+            self._lexer = self.Lexer()
         self.tokens = self._lexer.tokens
         self.parser = None
 
