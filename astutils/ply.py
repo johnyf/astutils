@@ -84,8 +84,8 @@ class Parser(object):
             self.nodes = nodes
         if lexer is None:
             lexer = self.Lexer()
-        self.lexer = lexer
-        self.tokens = self.lexer.tokens
+        self._lexer = lexer
+        self.tokens = self._lexer.tokens
         self.parser = None
 
     def build(
@@ -119,7 +119,7 @@ class Parser(object):
             self.build()
         root = self.parser.parse(
             input=formula,
-            lexer=self.lexer.lexer,
+            lexer=self._lexer.lexer,
             debug=debuglog)
         if root is None:
             raise Exception(
