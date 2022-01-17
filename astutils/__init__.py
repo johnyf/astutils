@@ -2,9 +2,11 @@
 # Copyright 2014-2022 by California Institute of Technology
 # All rights reserved. Licensed under 3-clause BSD.
 #
+from __future__ import absolute_import
 from astutils.ast import Terminal, Operator
 from astutils.ply import Lexer, Parser, rewrite_tables
 try:
-    from ._version import version as __version__
+    import astutils._version as _version
+    __version__ = _version.version
 except ImportError:
     __version__ = None
