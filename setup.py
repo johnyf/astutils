@@ -9,7 +9,7 @@ README = 'README.md'
 VERSION_FILE = '{name}/_version.py'.format(name=PACKAGE_NAME)
 MAJOR = 0
 MINOR = 0
-MICRO = 5
+MICRO = 6
 VERSION = '{major}.{minor}.{micro}'.format(
     major=MAJOR, minor=MINOR, micro=MICRO)
 VERSION_FILE_TEXT = (
