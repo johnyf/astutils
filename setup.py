@@ -15,9 +15,7 @@ VERSION = '{major}.{minor}.{micro}'.format(
 VERSION_FILE_TEXT = (
     '# This file was generated from setup.py\n'
     "version = '{version}'\n").format(version=VERSION)
-PYTHON_REQUIRES = (
-    '>=2.7, '
-    '!=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, !=3.5.*')
+PYTHON_REQUIRES = '>=3.10'
 TESTS_REQUIRE = ['pytest >= 4.6.11']
 KEYWORDS = [
     'lexing', 'parsing', 'syntax tree', 'abstract syntax tree',
@@ -27,14 +25,7 @@ CLASSIFIERS = [
     'Intended Audience :: Developers',
     'License :: OSI Approved :: BSD License',
     'Operating System :: OS Independent',
-    'Programming Language :: Python',
-    'Programming Language :: Python :: 2.7',
-    'Programming Language :: Python :: 3',
-    'Programming Language :: Python :: 3.6',
-    'Programming Language :: Python :: 3.7',
-    'Programming Language :: Python :: 3.8',
-    'Programming Language :: Python :: 3.9',
-    'Programming Language :: Python :: 3.10',
+    'Programming Language :: Python :: 3 :: Only',
     'Topic :: Software Development']
 
 
