@@ -74,8 +74,6 @@ class Parser(object):
         # low to high
         self.precedence = getattr(
             self, 'precedence', tuple())
-        self.Lexer = getattr(
-            self, 'Lexer', Lexer)
         self.nodes = getattr(
             self, 'nodes', _ast)
         self.logger = getattr(
