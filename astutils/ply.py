@@ -9,7 +9,7 @@ import os
 import ply.lex
 import ply.yacc
 
-from astutils import ast as nodes
+import astutils.ast as _ast
 
 
 logger = logging.getLogger(__name__)
@@ -64,7 +64,7 @@ class Parser(object):
     # low to high
     precedence = tuple()
     Lexer = Lexer
-    nodes = nodes
+    nodes = _ast
     logger = logger
 
     def __init__(
