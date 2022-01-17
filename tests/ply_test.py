@@ -25,7 +25,7 @@ class Parser(astutils.ply.Parser):
         self.precedence = (
             ('left', 'AND'),
             ('right', 'NOT'))
-        self.Lexer = Lexer
+        kw.setdefault('lexer', Lexer())
         super(Parser, self).__init__(**kw)
 
     def p_not(self, p):

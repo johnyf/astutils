@@ -5,6 +5,8 @@
 from __future__ import absolute_import
 import logging
 import os
+import textwrap as _tw
+import warnings
 
 import ply.lex
 import ply.yacc
@@ -83,6 +85,17 @@ class Parser(object):
         if lexer is not None:
             self._lexer = lexer
         elif hasattr(self, 'Lexer'):
+            warnings.warn(_tw.dedent(f'''
+                The parser attribute `Lexer`
+                has been deprecated. Instead,
+                pass argument `lexer`, for example:
+
+                ```py
+                lexer = Lexer()
+                super().__init__(lexer=lexer)
+                ```
+                '''),
+                DeprecationWarning)
             self._lexer = self.Lexer()
         else:
             raise ValueError(

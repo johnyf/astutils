@@ -75,8 +75,8 @@ class Parser(astutils.Parser):
             ('left', 'AND'),
             ('left', 'EQUALS', 'NEQUALS'),
             ('right', 'NOT'))
-        self.Lexer = Lexer
         self.nodes = _ast.Nodes
+        kw.setdefault('lexer', Lexer())
         super(Parser, self).__init__(**kw)
 
     def p_bool(self, p):
