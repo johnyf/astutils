@@ -82,8 +82,12 @@ class Parser(object):
             self.nodes = nodes
         if lexer is not None:
             self._lexer = lexer
-        else:
+        elif hasattr(self, 'Lexer'):
             self._lexer = self.Lexer()
+        else:
+            raise ValueError(
+                'pass argument `lexer` to '
+                '`Parser.__init__()`')
         self.tokens = self._lexer.tokens
         self.parser = None
 
