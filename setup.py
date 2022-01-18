@@ -4,17 +4,13 @@ import setuptools
 
 PACKAGE_NAME = 'astutils'
 DESCRIPTION = 'Utilities for abstract syntax trees and parsing with PLY.'
-PACKAGE_URL = 'https://github.com/johnyf/{name}'.format(name=PACKAGE_NAME)
+PACKAGE_URL = f'https://github.com/johnyf/{PACKAGE_NAME}'
 README = 'README.md'
-VERSION_FILE = '{name}/_version.py'.format(name=PACKAGE_NAME)
-MAJOR = 0
-MINOR = 0
-MICRO = 6
-VERSION = '{major}.{minor}.{micro}'.format(
-    major=MAJOR, minor=MINOR, micro=MICRO)
+VERSION_FILE = f'{PACKAGE_NAME}/_version.py'
+VERSION = '0.0.6'
 VERSION_FILE_TEXT = (
     '# This file was generated from setup.py\n'
-    "version = '{version}'\n").format(version=VERSION)
+    f"version = '{VERSION}'\n")
 PYTHON_REQUIRES = '>=3.10'
 TESTS_REQUIRE = ['pytest >= 4.6.11']
 KEYWORDS = [

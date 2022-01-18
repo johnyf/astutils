@@ -2,7 +2,6 @@
 # Copyright 2014-2022 by California Institute of Technology
 # All rights reserved. Licensed under 3-clause BSD.
 #
-from __future__ import absolute_import
 import logging
 import os
 import textwrap as _tw
@@ -17,7 +16,7 @@ import astutils.ast as _ast
 logger = logging.getLogger(__name__)
 
 
-class Lexer(object):
+class Lexer:
     """Init and build methods."""
 
     def __init__(self, debug=False):
@@ -40,8 +39,7 @@ class Lexer(object):
 
     def t_error(self, t):
         raise Exception(
-            'Illegal character "{t}"'.format(
-                t=t.value[0]))
+            f'Illegal character "{t.value[0]}"')
 
     def build(
             self,
@@ -58,7 +56,7 @@ class Lexer(object):
             **kwargs)
 
 
-class Parser(object):
+class Parser:
     """Init, build and parse methods.
 
     To subclass, overwrite the class attributes
@@ -149,8 +147,7 @@ class Parser(object):
         if root is not None:
             return root
         raise Exception(
-            'failed to parse:\n\t{f}'.format(
-                f=formula))
+            f'failed to parse:\n\t{formula}')
 
     def p_error(self, p):
         s = list()
@@ -159,11 +156,10 @@ class Parser(object):
             if tok is None:
                 break
             s.append(tok.value)
+        s = ' '.join(s)
         raise Exception(
-            'Syntax error at "{p}"\n'.format(
-                p=p.value) +
-            'remaining input:\n{s}\n'.format(
-                s=' '.join(s)))
+            f'Syntax error at "{p.value}"\n'
+            f'remaining input:\n{s}\n')
 
 
 def rewrite_tables(
@@ -207,17 +203,13 @@ def rewrite_tables(
     if outputdir is None:
         raise ValueError(
             '`outputdir` must be `str`.')
-    table = tabmodule.rpartition('.')[-1]
+    *_, table = tabmodule.rpartition('.')
     for ext in ('.py', '.pyc'):
         path = outputdir + table + ext
         if os.path.isfile(path):
-            logger.info(
-                'found file `{path}`'.format(
-                    path=path))
+            logger.info(f'found file `{path}`')
             os.remove(path)
-            logger.info(
-                'removed file `{path}`'.format(
-                    path=path))
+            logger.info(f'removed file `{path}`')
     parser = parser_class()
     debugfile = ply.yacc.debug_file
     path = os.path.join(outputdir, debugfile)

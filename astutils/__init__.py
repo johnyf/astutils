@@ -2,7 +2,6 @@
 # Copyright 2014-2022 by California Institute of Technology
 # All rights reserved. Licensed under 3-clause BSD.
 #
-from __future__ import absolute_import
 from astutils.ast import Terminal, Operator
 from astutils.ply import Lexer, Parser, rewrite_tables
 try:

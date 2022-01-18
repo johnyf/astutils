@@ -4,7 +4,7 @@
 #
 
 
-class Terminal(object):
+class Terminal:
     """Nullary symbol."""
 
     def __init__(
@@ -16,8 +16,7 @@ class Terminal(object):
         except TypeError:
             raise TypeError(
                 'value must be a string, '
-                'got: {v}'.format(
-                    v=value))
+                f'got: {value}')
         self.type = dtype
         self.value = value
 
@@ -25,10 +24,11 @@ class Terminal(object):
         return id(self)
 
     def __repr__(self):
-        return '{cls}({v}, {t})'.format(
-            cls=type(self).__name__,
-            t=repr(self.type),
-            v=repr(self.value))
+        class_name = type(self).__name__
+        return (
+            f'{class_name}('
+                f'{self.value!r}, '
+                f'{self.type!r})')
 
     def __str__(self, *arg, **kw):
         return self.value
@@ -48,7 +48,7 @@ class Terminal(object):
         return self.value
 
 
-class Operator(object):
+class Operator:
     """Operator with arity > 0."""
 
     def __init__(
@@ -60,26 +60,26 @@ class Operator(object):
         except TypeError:
             raise TypeError(
                 'operator must be string, '
-                'got: {op}'.format(
-                    op=operator))
+                f'got: {operator}')
         self.type = 'operator'
         self.operator = operator
         self.operands = list(operands)
 
     def __repr__(self):
-        return '{cls}({op}, {xyz})'.format(
-            cls=type(self).__name__,
-            op=repr(self.operator),
-            xyz=', '.join(
-                repr(x)
-                for x in self.operands))
+        class_name = type(self).__name__
+        xyz = ', '.join(
+            repr(x)
+            for x in self.operands)
+        return (
+            f'{class_name}('
+                f'{self.operator!r}, '
+                f'{xyz})')
 
     def __str__(self):
-        return '({op} {xyz})'.format(
-            op=self.operator,
-            xyz=' '.join(
-                x.__str__()
-                for x in self.operands))
+        xyz = ' '.join(
+            x.__str__()
+            for x in self.operands)
+        return f'({self.operator} {xyz})'
 
     def __len__(self):
         return 1 + sum(

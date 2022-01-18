@@ -23,20 +23,13 @@ import setuptools
 
 PACKAGE_NAME = 'foo'
 DESCRIPTION = 'foo is very useful.'
-PACKAGE_URL = 'https://example.org/{name}'.format(
-    name=PACKAGE_NAME)
+PACKAGE_URL = f'https://example.org/{PACKAGE_NAME}'
 README = 'README.md'
-VERSION_FILE = '{name}/_version.py'.format(
-    name=PACKAGE_NAME)
-MAJOR = 0
-MINOR = 0
-MICRO = 1
-VERSION = '{major}.{minor}.{micro}'.format(
-    major=MAJOR, minor=MINOR, micro=MICRO)
+VERSION_FILE = f'{PACKAGE_NAME}/_version.py'
+VERSION = '0.0.1'
 VERSION_FILE_TEXT = (
     '# This file was generated from setup.py\n'
-    "version = '{version}'\n").format(
-        version=VERSION)
+    f"version = '{VERSION}'\n")
 PYTHON_REQUIRES = '>=3.10'
 PLY_REQUIRED = 'ply >= 3.4, <= 3.10'
 INSTALL_REQUIRES = [PLY_REQUIRED]

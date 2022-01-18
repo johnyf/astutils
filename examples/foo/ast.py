@@ -10,7 +10,7 @@ overriding the `flatten` method.
 import astutils
 
 
-class Nodes(object):
+class Nodes:
     """Namespace of AST node classes."""
 
     Terminal = astutils.Terminal
