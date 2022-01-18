@@ -4,7 +4,7 @@ This allows changing backend, without touching the
 frontend (parser) in `lexyacc`.
 """
 import foo.ast as _ast
-from foo import lexyacc
+import foo.lexyacc as _lexyacc
 
 
 class Nodes(_ast.Nodes):
@@ -29,4 +29,4 @@ class Nodes(_ast.Nodes):
                 ')'])
 
 
-parser = lexyacc.Parser(nodes=Nodes())
+parser = _lexyacc.Parser(nodes=Nodes())
