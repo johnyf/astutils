@@ -37,9 +37,7 @@ VERSION_FILE_TEXT = (
     '# This file was generated from setup.py\n'
     "version = '{version}'\n").format(
         version=VERSION)
-PYTHON_REQUIRES = (
-    '>=2.7, '
-    '!=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, !=3.5.*')
+PYTHON_REQUIRES = '>=3.10'
 PLY_REQUIRED = 'ply >= 3.4, <= 3.10'
 INSTALL_REQUIRES = [PLY_REQUIRED]
 TESTS_REQUIRE = [
