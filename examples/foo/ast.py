@@ -11,7 +11,7 @@ import astutils
 
 
 class Nodes(object):
-    """Container of AST node classes."""
+    """Namespace of AST node classes."""
 
     Terminal = astutils.Terminal
     Operator = astutils.Operator
