@@ -7,7 +7,7 @@ import astutils
 import foo.ast as _ast
 
 
-TABMODULE = 'foo.calc_parsetab'
+_TABMODULE = 'foo.calc_parsetab'
 
 
 class Lexer(astutils.Lexer):
@@ -64,7 +64,7 @@ class Parser(astutils.Parser):
     """Parser for Boolean formulae."""
 
     def __init__(self, **kw):
-        self.tabmodule = TABMODULE
+        self.tabmodule = _TABMODULE
         self.start = 'expr'
         # low to high
         self.precedence = (
@@ -115,7 +115,7 @@ class Parser(astutils.Parser):
 
 def _rewrite_tables(outputdir='./'):
     astutils.rewrite_tables(
-        Parser, TABMODULE, outputdir)
+        Parser, _TABMODULE, outputdir)
 
 
 # this is a convenience to regenerate the tables
