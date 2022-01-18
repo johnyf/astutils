@@ -4,7 +4,7 @@ This file is `foo.lexyacc`, so that
 `setup.py` can `from foo import lexyacc`.
 """
 import astutils
-from foo.ast import Nodes
+import foo.ast as _ast
 
 
 TABMODULE = 'foo.calc_parsetab'
@@ -70,7 +70,7 @@ class Parser(astutils.Parser):
         ('left', 'EQUALS', 'NEQUALS'),
         ('right', 'NOT'))
     Lexer = Lexer
-    nodes = Nodes
+    nodes = _ast.Nodes
 
     def p_bool(self, p):
         """expr : TRUE

@@ -3,14 +3,14 @@
 This allows changing backend, without touching the
 frontend (parser) in `lexyacc`.
 """
-from foo.ast import Nodes as _Nodes
+import foo.ast as _ast
 from foo import lexyacc
 
 
-class Nodes(_Nodes):
+class Nodes(_ast.Nodes):
     """Further subclassing that changes selected flatteners."""
 
-    class Var(_Nodes.Var):
+    class Var(_ast.Nodes.Var):
         def flatten(self, varmap=None):
             """Rename variable, if found in `varmap`."""
             if varmap is None:
@@ -18,7 +18,7 @@ class Nodes(_Nodes):
             else:
                 return varmap.get(self.value, self.value)
 
-    class Binary(_Nodes.Binary):
+    class Binary(_ast.Nodes.Binary):
         def flatten(self, *arg, **kw):
             """Produce postfix syntax."""
             return ' '.join([
