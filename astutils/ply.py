@@ -132,9 +132,12 @@ class Parser(object):
             debuglog=None):
         """Parse string `formula`.
 
-        @param formula: input to the parser
-        @type formula: `str`
-        @return: what the parser returns
+        @param formula:
+            input to the parser
+        @type formula:
+            `str`
+        @return:
+            what the parser returns
             (many parsers return a syntax tree)
         """
         if self.parser is None:
@@ -189,12 +192,17 @@ def rewrite_tables(
         rewrite_tables(Parser, _TABMODULE, outputdir)
     ```
 
-    @param parser_class: PLY production rules
-    @param tabmodule: module name for table file
-    @type tabmodule: `str`
-    @param outputdir: dump parser file
+    @param parser_class:
+        PLY production rules
+    @param tabmodule:
+        module name for table file
+    @type tabmodule:
+        `str`
+    @param outputdir:
+        dump parser file
         in this directory
-    @type outputdir: `str`
+    @type outputdir:
+        `str`
     """
     if outputdir is None:
         raise ValueError(
