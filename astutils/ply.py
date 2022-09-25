@@ -126,14 +126,13 @@ class Parser:
 
     def parse(
             self,
-            formula,
+            formula:
+                str,
             debuglog=None):
         """Parse string `formula`.
 
         @param formula:
             input to the parser
-        @type formula:
-            `str`
         @return:
             what the parser returns
             (many parsers return a syntax tree)
@@ -164,8 +163,10 @@ class Parser:
 
 def rewrite_tables(
         parser_class,
-        tabmodule,
-        outputdir):
+        tabmodule:
+            str,
+        outputdir:
+            str):
     """Write the parser table file.
 
     Overwrites any preexisting parser file.
@@ -192,13 +193,9 @@ def rewrite_tables(
         PLY production rules
     @param tabmodule:
         module name for table file
-    @type tabmodule:
-        `str`
     @param outputdir:
         dump parser file
         in this directory
-    @type outputdir:
-        `str`
     """
     if outputdir is None:
         raise ValueError(
