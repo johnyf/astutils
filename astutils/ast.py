@@ -53,12 +53,11 @@ class Terminal:
             self,
             other
             ) -> bool:
-        try:
-            return (
-                self.type == other.type and
-                self.value == other.value)
-        except AttributeError:
-            return False
+        return (
+            hasattr(other, 'type') and
+            hasattr(other, 'value') and
+            self.type == other.type and
+            self.value == other.value)
 
     def flatten(
             self,
