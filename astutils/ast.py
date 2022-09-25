@@ -90,9 +90,7 @@ class Operator:
             self
             ) -> str:
         class_name = type(self).__name__
-        xyz = ', '.join(
-            repr(x)
-            for x in self.operands)
+        xyz = ', '.join(map(repr, self.operands))
         return (
             f'{class_name}('
                 f'{self.operator!r}, '
@@ -101,16 +99,13 @@ class Operator:
     def __str__(
             self
             ) -> str:
-        xyz = ' '.join(
-            x.__str__()
-            for x in self.operands)
+        xyz = ' '.join(map(str, self.operands))
         return f'({self.operator} {xyz})'
 
     def __len__(
             self
             ) -> int:
-        return 1 + sum(
-            len(x) for x in self.operands)
+        return 1 + sum(map(len, self.operands))
 
     def flatten(
             self,
