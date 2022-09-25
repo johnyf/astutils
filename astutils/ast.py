@@ -111,10 +111,7 @@ class Operator:
             self,
             *arg,
             **kw):
-        return ' '.join([
-            '(',
-            self.operator,
-            ', '.join(
-                x.flatten(*arg, **kw)
-                for x in self.operands),
-            ')'])
+        csv = ', '.join(
+            x.flatten(*arg, **kw)
+            for x in self.operands)
+        return f'( {self.operator} {csv} )'
