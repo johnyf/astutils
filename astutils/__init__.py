@@ -6,5 +6,5 @@ from astutils.ast import Terminal, Operator
 from astutils.ply import Lexer, Parser, rewrite_tables
 try:
     from ._version import version as __version__
-except:
+except ImportError:
     __version__ = None
