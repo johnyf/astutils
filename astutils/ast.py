@@ -9,8 +9,11 @@ class Terminal:
 
     def __init__(
             self,
-            value,
-            dtype='terminal'):
+            value:
+                str,
+            dtype:
+                str='terminal'
+            ) -> None:
         try:
             value + 's'
         except TypeError:
@@ -20,23 +23,36 @@ class Terminal:
         self.type = dtype
         self.value = value
 
-    def __hash__(self):
+    def __hash__(
+            self
+            ) -> int:
         return id(self)
 
-    def __repr__(self):
+    def __repr__(
+            self
+            ) -> str:
         class_name = type(self).__name__
         return (
             f'{class_name}('
                 f'{self.value!r}, '
                 f'{self.type!r})')
 
-    def __str__(self, *arg, **kw):
+    def __str__(
+            self,
+            *arg,
+            **kw
+            ) -> str:
         return self.value
 
-    def __len__(self):
+    def __len__(
+            self
+            ) -> int:
         return 1
 
-    def __eq__(self, other):
+    def __eq__(
+            self,
+            other
+            ) -> bool:
         try:
             return (
                 self.type == other.type and
@@ -44,7 +60,10 @@ class Terminal:
         except AttributeError:
             return False
 
-    def flatten(self, *arg, **kw):
+    def flatten(
+            self,
+            *arg,
+            **kw):
         return self.value
 
 
@@ -53,8 +72,10 @@ class Operator:
 
     def __init__(
             self,
-            operator,
-            *operands):
+            operator:
+                str,
+            *operands
+            ) -> None:
         try:
             operator + 'a'
         except TypeError:
@@ -65,7 +86,9 @@ class Operator:
         self.operator = operator
         self.operands = list(operands)
 
-    def __repr__(self):
+    def __repr__(
+            self
+            ) -> str:
         class_name = type(self).__name__
         xyz = ', '.join(
             repr(x)
@@ -75,17 +98,24 @@ class Operator:
                 f'{self.operator!r}, '
                 f'{xyz})')
 
-    def __str__(self):
+    def __str__(
+            self
+            ) -> str:
         xyz = ' '.join(
             x.__str__()
             for x in self.operands)
         return f'({self.operator} {xyz})'
 
-    def __len__(self):
+    def __len__(
+            self
+            ) -> int:
         return 1 + sum(
             len(x) for x in self.operands)
 
-    def flatten(self, *arg, **kw):
+    def flatten(
+            self,
+            *arg,
+            **kw):
         return ' '.join([
             '(',
             self.operator,

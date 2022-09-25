@@ -5,6 +5,7 @@
 import logging
 import os
 import textwrap as _tw
+import typing as _ty
 import warnings
 
 import ply.lex
@@ -19,7 +20,11 @@ logger = logging.getLogger(__name__)
 class Lexer:
     """Init and build methods."""
 
-    def __init__(self, debug=False):
+    def __init__(
+            self,
+            debug:
+                bool=False
+            ) -> None:
         self.reserved = getattr(
             self, 'reserved', dict())
         self.delimiters = getattr(
@@ -37,15 +42,20 @@ class Lexer:
             sorted(set(self.reserved.values())))
         self.build(debug=debug)
 
-    def t_error(self, t):
+    def t_error(
+            self,
+            t
+            ) -> _ty.NoReturn:
         raise Exception(
             f'Illegal character "{t.value[0]}"')
 
     def build(
             self,
-            debug=False,
+            debug:
+                bool=False,
             debuglog=None,
-            **kwargs):
+            **kwargs
+            ) -> None:
         """Create a lexer."""
         if debug and debuglog is None:
             debuglog = self.logger
@@ -66,7 +76,8 @@ class Parser:
     def __init__(
             self,
             nodes=None,
-            lexer=None):
+            lexer=None
+            ) -> None:
         self.tabmodule = getattr(
             self, 'tabmodule', None)
         self.start = getattr(
@@ -104,11 +115,17 @@ class Parser:
 
     def build(
             self,
-            tabmodule=None,
-            outputdir='',
-            write_tables=False,
-            debug=False,
-            debuglog=None):
+            tabmodule:
+                str |
+                None=None,
+            outputdir:
+                str='',
+            write_tables:
+                bool=False,
+            debug:
+                bool=False,
+            debuglog=None
+            ) -> None:
         """Build parser using `ply.yacc`."""
         if tabmodule is None:
             tabmodule = self.tabmodule
@@ -128,7 +145,8 @@ class Parser:
             self,
             formula:
                 str,
-            debuglog=None):
+            debuglog=None
+            ) -> _ty.Any:
         """Parse string `formula`.
 
         @param formula:
@@ -148,7 +166,10 @@ class Parser:
         raise Exception(
             f'failed to parse:\n\t{formula}')
 
-    def p_error(self, p):
+    def p_error(
+            self,
+            p
+            ) -> _ty.NoReturn:
         s = list()
         while True:
             tok = self.parser.token()
@@ -162,11 +183,13 @@ class Parser:
 
 
 def rewrite_tables(
-        parser_class,
+        parser_class:
+            type[Parser],
         tabmodule:
             str,
         outputdir:
-            str):
+            str
+        ) -> None:
     """Write the parser table file.
 
     Overwrites any preexisting parser file.
