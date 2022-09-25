@@ -161,10 +161,28 @@ class Parser:
             input=formula,
             lexer=self._lexer.lexer,
             debug=debuglog)
+        self._clear_lr_stack()
         if root is not None:
             return root
         raise Exception(
             f'failed to parse:\n\t{formula}')
+
+    def _clear_lr_stack(
+            self
+            ) -> None:
+        """Ensure no references remain.
+
+        Otherwise, references can prevent `gc` from
+        collecting objects that are expected to
+        have become unreachable.
+        """
+        has_lr_stack = (
+            self.parser is not None and
+            hasattr(self.parser, 'statestack') and
+            hasattr(self.parser, 'symstack'))
+        if not has_lr_stack:
+            return
+        self.parser.restart()
 
     def p_error(
             self,
