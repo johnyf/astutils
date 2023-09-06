@@ -27,36 +27,39 @@ class Lexer(astutils.Lexer):
         super(Lexer, self).__init__(**kw)
 
     def t_NAME(self, t):
-        r'[A-Za-z_][A-za-z0-9]*'
+        r"""
+        [A-Za-z_]
+        [A-za-z0-9]*
+        """
         t.type = self.reserved.get(
             t.value, 'NAME')
         return t
 
     def t_AND(self, t):
-        r'\&\&'
+        r' \& \& '
         t.value = '&'
         return t
 
     def t_OR(self, t):
-        r'\|\|'
+        r' \| \| '
         t.value = '|'
         return t
 
-    t_NOT = r'\!'
-    t_XOR = r'\^'
-    t_LPAREN = r'\('
-    t_RPAREN = r'\)'
-    t_NUMBER = r'\d+'
-    t_IMP = '->'
-    t_BIMP = r'\<->'
+    t_NOT = r' \! '
+    t_XOR = r' \^ '
+    t_LPAREN = r' \( '
+    t_RPAREN = r' \) '
+    t_NUMBER = r' \d+ '
+    t_IMP = ' -> '
+    t_BIMP = r' \< -> '
     t_ignore = ' \t'
 
     def t_comment(self, t):
-        r'\#.*'
+        r' \#.* '
         return
 
     def t_newline(self, t):
-        r'\n+'
+        r' \n+ '
         t.lexer.lineno += t.value.count('\n')
 
 
