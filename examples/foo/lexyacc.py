@@ -52,7 +52,7 @@ class Lexer(astutils.Lexer):
     t_NUMBER = r' \d+ '
     t_IMP = ' -> '
     t_BIMP = r' \< -> '
-    t_ignore = ' \t'
+    t_ignore = ''.join(['\x20', '\t'])
 
     def t_comment(self, t):
         r' \#.* '
