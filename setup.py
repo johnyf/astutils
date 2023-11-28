@@ -49,6 +49,7 @@ def run_setup():
         version=VERSION,
         description=DESCRIPTION,
         long_description=long_description,
+        long_description_content_type='text/markdown',
         author='Ioannis Filippidis',
         author_email='jfilippidis@gmail.com',
         url=PACKAGE_URL,
