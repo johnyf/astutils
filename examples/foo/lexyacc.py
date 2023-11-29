@@ -29,7 +29,7 @@ class Lexer(astutils.Lexer):
     def t_NAME(self, t):
         r"""
         [A-Za-z_]
-        [A-za-z0-9]*
+        [A-Za-z0-9]*
         """
         t.type = self.reserved.get(
             t.value, 'NAME')
