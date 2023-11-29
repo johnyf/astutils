@@ -66,7 +66,7 @@ def test_illegal_character():
     parser = Parser()
     parser.names = {'True': True}
     s = '( True'
-    with pytest.raises(Exception):
+    with pytest.raises(RuntimeError):
         parser.parse(s)
 
 
@@ -74,7 +74,7 @@ def test_syntax_error():
     parser = Parser()
     parser.names = {'True': True}
     s = 'True True'
-    with pytest.raises(Exception):
+    with pytest.raises(RuntimeError):
         parser.parse(s)
 
 

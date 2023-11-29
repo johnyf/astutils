@@ -46,7 +46,7 @@ class Lexer:
             self,
             t
             ) -> _ty.NoReturn:
-        raise Exception(
+        raise RuntimeError(
             f'Illegal character "{t.value[0]}"')
 
     def build(
@@ -164,7 +164,7 @@ class Parser:
         self._clear_lr_stack()
         if root is not None:
             return root
-        raise Exception(
+        raise RuntimeError(
             f'failed to parse:\n\t{formula}')
 
     def _clear_lr_stack(
@@ -195,7 +195,7 @@ class Parser:
                 break
             s.append(tok.value)
         s = ' '.join(s)
-        raise Exception(
+        raise RuntimeError(
             f'Syntax error at "{p.value}"\n'
             f'remaining input:\n{s}\n')
 
