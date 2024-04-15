@@ -7,7 +7,7 @@ DESCRIPTION = 'Utilities for abstract syntax trees and parsing with PLY.'
 PACKAGE_URL = f'https://github.com/johnyf/{PACKAGE_NAME}'
 README = 'README.md'
 VERSION_FILE = f'{PACKAGE_NAME}/_version.py'
-VERSION = '0.0.6'
+VERSION = '0.0.7'
 VERSION_FILE_TEXT = (
     '# This file was generated from setup.py\n'
     f"version = '{VERSION}'\n")
