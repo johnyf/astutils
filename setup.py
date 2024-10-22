@@ -43,7 +43,6 @@ def run_setup():
         license='BSD',
         python_requires=PYTHON_REQUIRES,
         install_requires=['ply >= 3.4, <= 3.10'],
-        tests_require=TESTS_REQUIRE,
         packages=[PACKAGE_NAME],
         package_dir={PACKAGE_NAME: PACKAGE_NAME},
         classifiers=CLASSIFIERS,

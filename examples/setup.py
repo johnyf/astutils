@@ -33,8 +33,6 @@ VERSION_FILE_TEXT = (
 PYTHON_REQUIRES = '>=3.10'
 PLY_REQUIRED = 'ply >= 3.4, <= 3.10'
 INSTALL_REQUIRES = [PLY_REQUIRED]
-TESTS_REQUIRE = [
-    'pytest >= 4.6.11']
 
 
 def run_setup():
@@ -58,7 +56,6 @@ def run_setup():
         license='BSD',
         python_requires=PYTHON_REQUIRES,
         install_requires=INSTALL_REQUIRES,
-        tests_require=TESTS_REQUIRE,
         packages=[PACKAGE_NAME],
         package_dir={PACKAGE_NAME: PACKAGE_NAME},
         keywords=['parsing', 'setup'])
